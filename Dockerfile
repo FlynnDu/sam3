@@ -18,7 +18,7 @@ RUN sed -i "s|http://archive.ubuntu.com/ubuntu/|${MIRROR_URL}|g" \
         build-essential && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY sam3 /app/sam3
+COPY . /app/sam3
 RUN --mount=type=cache,target=/root/.cache/pip \
     cd /app/sam3 && pip install . -i https://pypi.tuna.tsinghua.edu.cn/simple
 
@@ -64,4 +64,4 @@ ENV LOG_LEVEL=INFO
 USER appuser
 
 
-# docker build -f Dockerfile -t registry.cn-shenzhen.aliyuncs.com/flynndu/sam3-base:3.1 .
+# docker build -f Dockerfile -t registry.cn-shenzhen.aliyuncs.com/flynndu/sam3:3.1 .
